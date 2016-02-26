@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <div class="page-header">
+                    <h3 class="text-center">Ryanair Cheap Flights <small>Pick Yours!</small></h3>
+                </div>
+            <form class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="dateFrom" class="col-sm-6 control-label">Date From: </label>
+                            <div class="col-sm-5">
+                                <datepicker date-format="yyyy-MM-dd">
+                                    <input class="form-control" id="dateFrom" ng-change="dateChanged()" ng-model="dateFrom" type="text" placeholder="{{messages.choose_departure_date}}"/>
+                                </datepicker>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="selectedFrom" class="col-sm-5 control-label">Departure Airport:</label>
+                            <div class="col-sm-6">
+                                <angucomplete-alt
+                                        id="selectedFrom"
+                                        placeholder="{{messages.choose_departure_airport}}"
+                                        pause="500"
+                                        selected-object="selectedFrom"
+                                        local-data="airports"
+                                        search-fields="name"
+                                        title-field="name"
+                                        minlength="1"
+                                        input-class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="dateTo" class="col-sm-6 control-label">Date To: </label>
+                            <div class="col-sm-5">
+                                <datepicker date-format="yyyy-MM-dd">
+                                    <input class="form-control" id="dateTo" ng-change="dateChanged()"  ng-model="dateTo" type="text" placeholder="{{messages.choose_return_date}}"/>
+                                </datepicker>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="selectedTo" class="col-sm-5 control-label">Destination Airport:</label>
+                            <div class="col-sm-6">
+                                <angucomplete-alt
+                                        id="selectedTo"
+                                        placeholder="{{messages.choose_destination_airport}}"
+                                        pause="500"
+                                        selected-object="selectedTo"
+                                        local-data="airports"
+                                        search-fields="name"
+                                        title-field="name"
+                                        minlength="1"
+                                        input-class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button ng-click="showFlights()" class="btn btn-default">Show</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-show="areFlightsAvailable" class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>from</th>
+                    <th>to</th>
+                    <th>price</th>
+                    <th>action</th>
+                </tr>
+                <tr  ng-repeat="flight in flightsAvailable">
+                    <td>{{flight.outbound.airportFrom.name}}</td>
+                    <td>{{flight.outbound.airportTo.name}}</td>
+                    <td>{{flight.outbound.price.value}} {{flight.outbound.price.currencySymbol}}</td>
+                    <td><a href="https://www.ryanair.com/{{flight.summary.flightViewUrl}}" target="_blank">Show me</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

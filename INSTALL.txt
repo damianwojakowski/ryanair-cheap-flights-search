@@ -1,0 +1,8 @@
+1. Installation Guide
+
+1. Make sure NPM, NodeJS and bower are installed.
+2. Open console and type "npm install" - after installation the app should be availabe at http://localhost:8000/app
+
+To start development server type "npm start"
+
+NOTES: This is what I've managed to make during one evening session (didn't have more time to finish it).
