@@ -4,7 +4,6 @@ var cheapFlights = angular.module('cheapFlightsApp', [
     'ngRoute',
 
     'cheapFlightsControllers',
-    'cheapFlightsFilters',
     'cheapFlightsServices',
     'angucomplete-alt',
     '720kb.datepicker'
